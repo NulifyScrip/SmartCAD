@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Patrol CAD</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="top-bar">
+        <div>
+            <h1>SmartCAD</h1>
+            <p>Patrol Console</p>
+        </div>
+
+        <div class="patrol-header-controls">
+            <div class="unit-entry">
+                <label
+                    class="header-label"
+                    for="patrol-unit-number"
+                >
+                    Unit
+                </label>
+
+                <input
+                    id="patrol-unit-number"
+                    class="unit-number-input"
+                    type="text"
+                    list="patrol-known-units"
+                    value="319"
+                    autocomplete="off"
+                    aria-label="Patrol unit number"
+                >
+
+                <datalist id="patrol-known-units"></datalist>
+            </div>
+
+            <select
+                id="unit-status"
+                class="unit-status-select"
+                aria-label="Unit status"
+            >
+                <option value="Available">Available</option>
+                <option value="Dispatched">Dispatched</option>
+                <option value="En Route">En Route</option>
+                <option value="On Scene">On Scene</option>
+                <option value="Busy">Busy</option>
+                <option value="Out of Service">Out of Service</option>
+            </select>
+
+            <div class="profile-wrapper">
+                <button
+                    id="profile-button"
+                    class="profile-button"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="profile-menu"
+                    title="Unit profile"
+                >
+                    <span
+                        id="profile-avatar"
+                        class="profile-avatar"
+                        aria-hidden="true"
+                    >
+                        319
+                    </span>
+
+                    <span
+                        class="profile-arrow"
+                        aria-hidden="true"
+                    >
+                        ▼
+                    </span>
+                </button>
+
+                <div
+                    id="profile-menu"
+                    class="profile-menu hidden"
+                >
+                    <div class="profile-header">
+                        <div
+                            id="menu-avatar"
+                            class="menu-avatar"
+                        >
+                            319
+                        </div>
+
+                        <strong id="profile-name">
+                            Patrol Unit
+                        </strong>
+
+                        <span id="profile-unit">
+                            Unit 319
+                        </span>
+                    </div>
+
+                    <div class="menu-divider"></div>
+
+                    <button
+                        class="menu-item"
+                        type="button"
+                        data-menu-action="unit"
+                    >
+                        My Unit
+                    </button>
+
+                    <button
+                        class="menu-item"
+                        type="button"
+                        data-menu-action="settings"
+                    >
+                        Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-layout">
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Assigned Calls</h2>
+
+                <span
+                    id="patrol-call-count"
+                    class="count-badge"
+                >
+                    0
+                </span>
+            </div>
+
+            <div
+                id="patrol-call-list"
+                class="call-list"
+            >
+                <div class="empty-message">
+                    No calls assigned to this unit.
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Call Information</h2>
+            </div>
+
+            <div
+                id="call-details"
+                class="call-details"
+            >
+                <div class="empty-message">
+                    Select an assigned call to view its information.
+                </div>
+            </div>
+        </section>
+
+               <!-- Active Calls -->
+        <section class="panel active-calls-panel">
+            <div class="panel-header">
+                <h2>Active Calls</h2>
+
+                <div class="active-calls-header-actions">
+                    <span
+                        id="active-call-count"
+                        class="count-badge"
+                    >
+                        0
+                    </span>
+
+                    <button
+                        id="panic-button"
+                        class="panic-button"
+                        type="button"
+                        aria-label="Activate panic alert"
+                        title="Activate panic alert"
+                    >
+                        PANIC
+                    </button>
+                </div>
+            </div>
+
+            <div
+                id="active-call-list"
+                class="active-call-list"
+            >
+                <div class="empty-message">
+                    No active calls available.
+                </div>
+            </div>
+        </section>
+
+        <!-- Completed Calls -->
+        <section class="panel completed-calls-panel">
+            <div class="panel-header">
+                <h2>Completed Calls</h2>
+
+                <span
+                    id="completed-call-count"
+                    class="count-badge"
+                >
+                    0
+                </span>
+            </div>
+
+            <div
+                id="completed-call-list"
+                class="completed-calls-list"
+            >
+                <div class="empty-message">
+                    No completed calls.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <audio
+        id="incoming-call-sound"
+        preload="auto"
+    >
+        <source
+            src="incomingcall.mp3"
+            type="audio/mpeg"
+        >
+
+        Your browser does not support audio playback.
+    </audio>
+
+    <audio
+        id="panic-sound"
+        preload="auto"
+    >
+        <source
+            src="panic.mp3"
+            type="audio/mpeg"
+        >
+
+        Your browser does not support audio playback.
+    </audio>
+
+    <script src="shared.js"></script>
+    <script src="patrol.js?v=6"></script>
+</body>
+</html>

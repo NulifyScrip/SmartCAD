@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispatcher CAD Sign In</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-page">
+    <main class="login-container">
+        <section class="login-card">
+            <div class="login-avatar" aria-hidden="true">DC</div>
+
+            <h1>Dispatcher CAD</h1>
+            <p class="login-subtitle">Sign in to access the dispatcher console</p>
+
+            <form id="dispatcher-login-form">
+                <div class="field">
+                    <label for="dispatcher-login-username">Username</label>
+                    <input
+                        id="dispatcher-login-username"
+                        type="text"
+                        autocomplete="username"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="dispatcher-login-password">Password</label>
+                    <input
+                        id="dispatcher-login-password"
+                        type="password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <div
+                    id="dispatcher-login-error"
+                    class="login-error"
+                    role="alert"
+                ></div>
+
+                <button
+                    id="dispatcher-login-submit"
+                    class="button primary-button login-button"
+                    type="submit"
+                >
+                    Sign In
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <script src="shared.js"></script>
+    <script src="dispatcher-login.js"></script>
+</body>
+</html>

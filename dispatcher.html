@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispatcher CAD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="top-bar">
+        <div>
+            <h1>SmartCAD</h1>
+            <p>Dispatcher Console</p>
+        </div>
+
+        <div class="dispatcher-header-controls">
+            <div class="connection-status" aria-label="Connection status: connected">
+                <span class="status-dot" aria-hidden="true"></span>
+                Connected
+            </div>
+
+            <span id="dispatcher-user" class="signed-in-user">Kim Seoul</span>
+
+            <button
+                id="dispatcher-sign-out"
+                class="button secondary-button compact-button"
+                type="button"
+            >
+                Sign Out
+            </button>
+        </div>
+    </header>
+
+    <main class="page-layout">
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Create Call</h2>
+            </div>
+
+            <form id="call-form">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="call-type">Call Type</label>
+                        <select id="call-type" required>
+                            <option value="">Select a call type</option>
+                            <option value="Traffic Stop">Traffic Stop</option>
+                            <option value="Shoplifting">Shoplifting</option>
+                            <option value="Suspicious Person">Suspicious Person</option>
+                            <option value="Disturbance">Disturbance</option>
+                            <option value="Vehicle Accident">Vehicle Accident</option>
+                            <option value="Officer Assistance">Officer Assistance</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="priority">Priority</label>
+                        <select id="priority" required>
+                            <option value="1">Priority 1 - Emergency</option>
+                            <option value="2">Priority 2 - Urgent</option>
+                            <option value="3" selected>Priority 3 - Routine</option>
+                        </select>
+                    </div>
+
+                    <div class="field field-wide">
+                        <label for="address">Address / Location</label>
+                        <input
+                            id="address"
+                            type="text"
+                            placeholder="Example: 5007 N Davis Highway"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="cross-street">Cross Street</label>
+                        <input
+                            id="cross-street"
+                            type="text"
+                            placeholder="Example: Amber Street"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="assigned-unit">Assigned Unit</label>
+                        <input
+                            id="assigned-unit"
+                            type="text"
+                            list="known-units"
+                            placeholder="Example: 319"
+                            required
+                        >
+                        <datalist id="known-units"></datalist>
+                        <span id="assigned-unit-hint" class="field-hint"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="caller-name">Caller Name</label>
+                        <input id="caller-name" type="text" placeholder="Caller name">
+                    </div>
+
+                    <div class="field">
+                        <label for="caller-phone">Caller Phone</label>
+                        <input id="caller-phone" type="tel" placeholder="Phone number">
+                    </div>
+
+                    <div class="field field-wide">
+                        <label for="call-notes">Call Notes</label>
+                        <textarea
+                            id="call-notes"
+                            rows="5"
+                            placeholder="Enter details about the call..."
+                            required
+                        ></textarea>
+                    </div>
+                </div>
+
+                <div id="dispatcher-message" class="form-message" role="status"></div>
+
+                <div class="button-row">
+                    <button class="button primary-button" type="submit">
+                        Dispatch Call
+                    </button>
+
+                    <button
+                        class="button secondary-button"
+                        id="clear-form-button"
+                        type="button"
+                    >
+                        Clear Form
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Active Calls</h2>
+                <span id="active-call-count" class="count-badge">0</span>
+            </div>
+
+            <div id="dispatcher-call-list" class="call-list">
+                <div class="empty-message">No active calls.</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="shared.js"></script>
+    <script src="dispatcher.js"></script>
+</body>
+</html>
